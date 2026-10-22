@@ -1,0 +1,47 @@
+# =========================================================================
+# Android Studio & IntelliJ IDEA
+# =========================================================================
+.idea/
+*.iml
+.gradle/
+build/
+app/build/
+**/build/
+captures/
+.externalNativeBuild/
+.cxx/
+local.properties
+
+# =========================================================================
+# Android Studio workspace & local state (evita conflictos de ventanas)
+# =========================================================================
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/gradle.xml
+.idea/assetWizardSettings.xml
+.idea/dictionaries/
+.idea/libraries/
+.idea/caches/
+.idea/navEditor.xml
+
+# =========================================================================
+# Keystores, Passwords and Secrets
+# =========================================================================
+*.jks
+*.keystore
+*.pepk
+google-services.json
+secrets.properties
+
+# =========================================================================
+# Log files & OS system files
+# =========================================================================
+*.log
+.DS_Store
+Thumbs.db
+
+# =========================================================================
+# Profiling and Benchmarks
+# =========================================================================
+*.hprof
+*.trace

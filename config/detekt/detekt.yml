@@ -1,0 +1,34 @@
+build:
+  maxIssues: 0
+  excludeCorrectable: false
+
+config:
+  validation: true
+  warningsAsErrors: false
+
+# Excepciones específicas para nombres en Jetpack Compose
+naming:
+  FunctionNaming:
+    active: true
+    ignoreAnnotated: ['Composable']
+  TopLevelPropertyNaming:
+    active: true
+    # Permite constantes privadas y objetos Compose
+    constantPattern: '[A-Z][A-Za-z0-9_]*'
+
+# Buenas prácticas con Coroutines en producción
+coroutines:
+  GlobalCoroutineUsage:
+    active: true
+  RedundantSuspendModifier:
+    active: true
+  SleepInsteadOfDelay:
+    active: true
+
+# Desactivar reglas ruidosas para proyectos iniciales
+style:
+  MagicNumber:
+    active: false
+  UnusedPrivateMember:
+    active: true
+    allowedNames: '(_|preview.*)'
