@@ -1,4 +1,4 @@
-# Specification: [Nombre de la Feature]
+# Specification: [Feature Name]
 
 ## 1. Goal & Context
 Briefly explain the goal of this feature and user impact.
@@ -12,6 +12,6 @@ Briefly explain the goal of this feature and user impact.
 - [ ] Criterion 1
 - [ ] Criterion 2
 
-## 4. Testing Strategy (>= 80% Coverage)
+## 4. Testing Strategy
 - Unit tests for `[Feature]UseCaseTest.kt` (Mocking repository).
-- Unit tests for `[Feature]ViewModelTest.kt` (Testing StateFlow & Events with Turbine).
+- Unit tests for `[Feature]ViewModelTest.kt` (Testing StateFlow & Events).

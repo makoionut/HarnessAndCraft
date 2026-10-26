@@ -25,6 +25,12 @@ coroutines:
   SleepInsteadOfDelay:
     active: true
 
+complexity:
+  StringLiteralDuplication:
+    active: true
+    threshold: 3
+    ignoreAnnotation: true
+
 # Desactivar reglas ruidosas para proyectos iniciales
 style:
   MagicNumber:
