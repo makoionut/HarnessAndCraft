@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name="com.example.codechallenge.CodeChallengeApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -14,9 +15,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CodeChallenge">
         <activity
-            android:name=".MainActivity"
+            android:name="com.example.codechallenge.MainActivity"
             android:exported="true"
-            android:label="@string/app_name"
             android:theme="@style/Theme.CodeChallenge"
             android:windowSoftInputMode="adjustResize">
             <intent-filter>

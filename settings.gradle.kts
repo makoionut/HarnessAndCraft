@@ -26,3 +26,9 @@ dependencyResolutionManagement {
 
 rootProject.name = "CodeChallenge"
 include(":app")
+include(":core:common")
+include(":core:resources")
+include(":features:sample")
+
+project(":core:common").projectDir = file("core/common")
+project(":core:resources").projectDir = file("core/resources")

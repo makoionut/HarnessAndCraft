@@ -11,6 +11,7 @@ captures/
 .externalNativeBuild/
 .cxx/
 local.properties
+.coda/
 
 # =========================================================================
 # Android Studio workspace & local state (evita conflictos de ventanas)

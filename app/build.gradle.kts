@@ -41,9 +41,6 @@ android {
         compose = true
         buildConfig = true
     }
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.8"
-    }
     packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
@@ -85,6 +82,7 @@ dependencies {
     // DataStore & Coil
     implementation(libs.datastore.preferences)
     implementation(libs.coil.compose)
+    implementation(libs.jspecify)
 
     // Testing
     testImplementation(libs.junit)
@@ -92,6 +90,11 @@ dependencies {
     testImplementation(libs.kotlinx.coroutines.test)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
+
+    // Features & Core
+    implementation(project(":features:sample"))
+    implementation(project(":core:common"))
+    implementation(project(":core:resources"))
 }
 
 secrets {

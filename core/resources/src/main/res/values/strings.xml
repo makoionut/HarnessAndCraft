@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CodeChallenge</string>
+    <string name="greeting_android">Android</string>
+    <string name="main_greeting_message">Hello %1$s!</string>
+    <string name="sample_title">CodeChallenge Architecture</string>
+    <string name="sample_subtitle">Modern Modular Jetpack Compose &amp; Clean Architecture</string>
+    <string name="sample_card_modularization_title">Modular Topology</string>
+    <string name="sample_card_modularization_desc">Isolated feature modules with strict dependency rules and convention scripts.</string>
+    <string name="sample_card_navigation_title">Decoupled Navigation</string>
+    <string name="sample_card_navigation_desc">Centralized AppNavHost in `:app` with contract-based routing.</string>
+    <string name="sample_card_m3_title">Material 3 &amp; Theming</string>
+    <string name="sample_card_m3_desc">Dynamic color support, custom tokens, and adaptive components.</string>
+    <string name="sample_action_explore">Explore System</string>
+</resources>

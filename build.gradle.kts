@@ -1,3 +1,5 @@
+import com.android.build.api.dsl.ApplicationExtension
+import com.android.build.api.dsl.LibraryExtension
 import com.diffplug.gradle.spotless.SpotlessExtension
 import io.gitlab.arturbosch.detekt.extensions.DetektExtension
 
@@ -5,6 +7,7 @@ import io.gitlab.arturbosch.detekt.extensions.DetektExtension
 plugins {
     alias(libs.plugins.android.application) apply false
     alias(libs.plugins.kotlin.compose) apply false
+    alias(libs.plugins.kotlin.serialization) apply false
     alias(libs.plugins.spotless) apply true
     alias(libs.plugins.detekt) apply true
     alias(libs.plugins.secrets) apply false
@@ -12,7 +15,45 @@ plugins {
 }
 
 subprojects {
-    // Spotless Consifiguration
+    // Common Android Application Configuration
+    pluginManager.withPlugin("com.android.application") {
+        extensions.configure<ApplicationExtension>("android") {
+            compileSdk = 37
+            defaultConfig {
+                minSdk = 24
+                targetSdk = 37
+                testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+            }
+            compileOptions {
+                sourceCompatibility = JavaVersion.VERSION_17
+                targetCompatibility = JavaVersion.VERSION_17
+            }
+            buildFeatures {
+                compose = true
+                buildConfig = true
+            }
+        }
+    }
+
+    // Common Android Library Configuration
+    pluginManager.withPlugin("com.android.library") {
+        extensions.configure<LibraryExtension>("android") {
+            compileSdk = 37
+            defaultConfig {
+                minSdk = 24
+                testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+            }
+            compileOptions {
+                sourceCompatibility = JavaVersion.VERSION_17
+                targetCompatibility = JavaVersion.VERSION_17
+            }
+            buildFeatures {
+                compose = true
+            }
+        }
+    }
+
+    // Spotless Configuration
     pluginManager.withPlugin("com.diffplug.spotless") {
         this@subprojects.configure<SpotlessExtension> {
             kotlin {
@@ -20,7 +61,10 @@ subprojects {
                 targetExclude("**/build/**/*.kt")
                 ktlint("1.2.1").editorConfigOverride(
                     mapOf(
-                        "ktlint_function_naming_ignore_when_annotated_with" to "Composable"
+                        "ktlint_function_naming_ignore_when_annotated_with" to "Composable",
+                        "ktlint_standard_no-wildcard-imports" to "enabled",
+                        "ij_kotlin_use_import_with_star" to "false",
+                        "ij_kotlin_use_import_with_star_for_members" to "false",
                     )
                 )
             }
@@ -40,9 +84,6 @@ subprojects {
         }
         tasks.withType<io.gitlab.arturbosch.detekt.Detekt>().configureEach {
             jvmTarget = "17"
-            doFirst {
-                System.setProperty("java.version", "21.0.0")
-            }
         }
     }
 }

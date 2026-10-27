@@ -1,5 +1,0 @@
-## Spec-Driven Development (SDD)
-All engineering standards, autonomous rules, and feature specs are located in:
-@.agent/AGENT_INSTRUCTIONS.md
-
-Always reference specifications inside `.agent/specs/` before writing any code.

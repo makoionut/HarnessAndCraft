@@ -1,4 +1,4 @@
-package com.example.codechallenge.ui.theme
+package com.example.codechallenge.core.resources.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

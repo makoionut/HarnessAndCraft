@@ -1,15 +1,18 @@
-# AI Agent Engineering Rules & Protocols
+# Code Style & Standards (Appendix)
 
-You are an autonomous Senior Android Software Engineer operating on this repository. Every task you perform must follow these non-negotiable architectural rules.
+Style rules referenced by `.agent/AGENT_INSTRUCTIONS.md`. The verification command lives there — this file covers style only.
 
 ## 1. Architecture & Code Style Guidelines
-- Strictly adhere to the standards defined in `.agent/rules/code_style.md`.
 - Clean Architecture: `domain` (pure Kotlin), `data` (repositories & data sources), and `presentation` (Compose & MVVM).
 - Use `Resource<T>` for data states and `safeApiCall` for network requests.
 - Inject dependencies using Koin modules (`di/`).
 
 ## 2. Internationalization & String Resources (i18n)
 - **NO HARDCODED STRINGS**: Any user-facing static text must be declared as a string resource in `res/values/strings.xml`.
+- **String location (multi-module)**:
+    - Shared strings (used by more than one feature, or by the design system) live in `:core:resources` → `res/values/strings.xml`.
+    - Feature-specific strings live in the feature's own module → `features/<feature_name>/src/main/res/values/strings.xml`.
+    - If a feature needs a new shared string, add it to `:core:resources` and reference it via `R` import of that module's namespace.
 - **Naming Convention**: Use descriptive snake_case prefixes matching the feature or component:
     - `<feature>_<component>_<description>` (e.g., `login_button_sign_in`, `user_profile_error_not_found`).
 - **Compose Consumption**: Always use `stringResource(id = R.string.xxx)` inside `@Composable` functions.
@@ -20,7 +23,7 @@ You are an autonomous Senior Android Software Engineer operating on this reposit
 ## 3. Security & Secrets Management
 - **NO HARDCODED CREDENTIALS**: NEVER hardcode API keys, tokens, or secret URLs in Kotlin code or XML files.
 - **BuildConfig Injection**: All credentials must be read from `BuildConfig.<KEY_NAME>`.
-- **Secrets Setup**: When a feature requires a new credential, instruct the developer to add the key name to `secrets.default.properties` and the real value to `secrets.properties`.
+- **Secrets Setup**: When a feature requires a new credential, instruct the developer to add the key name to `secrets.defaults.properties` and the real value to `secrets.properties`.
 
 ## 4. Material 3 Design System & UI Components
 - **Material 3 (M3) Mandatory**: All UI views, screens, components, colors, and typography MUST use Material 3 (`androidx.compose.material3`).
@@ -38,6 +41,7 @@ Adhere strictly to official Kotlin and Java coding conventions:
     - *Sample (Composable)*: `@Composable fun ShowListScreen()`
 - **Local Variables and Parameters**: lowerCamelCase.
     - *Sample*: `val popularList = emptyList<Show>()`
+    - **No Leading Underscore**: Never prefix local variable or parameter names with `_` (e.g., use `result`, not `_result`).
 - **Static Variables and Constants**: SCREAMING_SNAKE_CASE (for compile-time constants `val` or `const val`).
     - *Sample*: `const val MAX_PAGE_SIZE = 20`, `val DEFAULT_TIMEOUT_SECONDS = 30L`
 
@@ -51,10 +55,12 @@ Adhere strictly to official Kotlin and Java coding conventions:
 - **Structured Concurrency**: Always use `viewModelScope` in ViewModels or structured coroutine scopes tied to lifecycles.
 - **No GlobalScope**: `GlobalScope` is strictly prohibited.
 - **Dispatcher Management**: Perform blocking operations or I/O on `Dispatchers.IO` using `withContext(Dispatchers.IO)` or inject dispatchers for testability.
+ 
+## 8. Code Quality & Imports
+- **NO WILDCARD IMPORTS**: Explicitly import each class and function (e.g., `import kotlinx.coroutines.flow.StateFlow`). Never use `*` (e.g., `import kotlinx.coroutines.flow.*`).
 
-## 8. Verification Protocol
-After implementing any feature or fix, you MUST run and pass:
-
-```bash
-./gradlew spotlessApply detekt testDebugUnitTest
-```
+## 9. Deprecated APIs & Compiler Warnings
+- **NO DEPRECATED APIs**: Never use a deprecated API (production or test code). Use the replacement named in the deprecation message (e.g., `androidx.compose.ui.test.junit4.v2.createComposeRule`, not `androidx.compose.ui.test.junit4.createComposeRule`).
+- **Zero warnings**: The build treats all Kotlin compiler warnings as errors (`allWarningsAsErrors` in the root `build.gradle.kts`). Fix the warning; do NOT disable the flag, downgrade it, or add `@Suppress("DEPRECATION")` / `@Suppress("DeprecatedCallableAddReplaceWith")` to get around it.
+- **New dependency or API**: Before using an API from a library or version you have not used in this repo, check the compile output for deprecation warnings and migrate immediately.
+- **Library upgrades**: If an upgrade introduces new deprecations, migrate them in the same change.

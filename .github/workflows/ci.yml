@@ -20,7 +20,9 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
-          cache: gradle
+
+      - name: Set up Gradle with caching
+        uses: gradle/actions/setup-gradle@v4
 
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
@@ -33,3 +35,6 @@ jobs:
 
       - name: Run Unit Tests
         run: ./gradlew testDebugUnitTest
+
+      - name: Assemble Debug APK
+        run: ./gradlew :app:assembleDebug
