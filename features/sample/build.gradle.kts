@@ -1,12 +1,11 @@
 plugins {
     id("com.android.library")
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.spotless)
     alias(libs.plugins.detekt)
     alias(libs.plugins.ksp)
 }
-
-apply(from = "$rootDir/gradle/common-feature.gradle.kts")
 
 android {
     namespace = "com.example.codechallenge.features.sample"
@@ -14,4 +13,13 @@ android {
 
 dependencies {
     implementation(project(":core:resources"))
+    implementation(project(":core:common"))
+    implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.bundles.common)
+    implementation(libs.bundles.compose)
+    implementation(libs.bundles.koin)
+    debugImplementation(libs.androidx.compose.ui.tooling)
+
+    testImplementation(libs.bundles.test)
+    androidTestImplementation(libs.bundles.androidTest)
 }

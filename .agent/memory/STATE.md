@@ -2,9 +2,9 @@
 
 ## Current Milestone
 - [x] Base Architecture Harness (IA Agents + Spotless + Detekt)
-- [x] Core & Features Modularization: Moved shared infrastructural modules into `core/` as `:core:common` and `:core:resources`.
-- [x] Navigation Architecture: Implemented central `AppNavHost` and `NavHostController` in `:app`.
-- [x] Custom Agent Skill: `accessibility-audit` added for Jetpack Compose accessibility (a11y) standards.
+- [x] Core & Features Modularization into `core/` as `:core:common` and `:core:resources`.
+- [x] Navigation Architecture (`AppNavHost` with Navigation Compose).
+- [x] Custom Agent Skill: `accessibility-audit`.
 
 ## Active Modules & Implementations
 
@@ -13,5 +13,5 @@
 ## Pending
 
 ## Verification
-- `./gradlew spotlessApply detekt testDebugUnitTest assembleDebug` — BUILD SUCCESSFUL.
+- `./gradlew spotlessApply detekt testDebugUnitTest assembleDebug` — BUILD SUCCESSFUL (All unit tests passing, including Turbine tests).
 - Requires JDK 17.

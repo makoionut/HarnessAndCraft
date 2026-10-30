@@ -5,8 +5,16 @@ plugins {
     alias(libs.plugins.detekt)
 }
 
-apply(from = "$rootDir/gradle/common-feature.gradle.kts")
-
 android {
     namespace = "com.example.codechallenge.core.resources"
+}
+
+dependencies {
+    implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.bundles.common)
+    implementation(libs.bundles.compose)
+    debugImplementation(libs.androidx.compose.ui.tooling)
+
+    testImplementation(libs.bundles.test)
+    androidTestImplementation(libs.bundles.androidTest)
 }

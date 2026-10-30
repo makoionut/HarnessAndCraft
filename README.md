@@ -39,7 +39,7 @@ CodeChallenge/
 
 ## 3. Technology Stack & Libraries
 
-Managed centrally via Gradle Version Catalog (`gradle/libs.versions.toml`):
+Managed centrally via Gradle Version Catalog (`gradle/libs.versions.toml`) and Dependency Bundles (`libs.bundles.*`):
 
 - **Language & Runtime**: Kotlin 2.x, Coroutines & Flow
 - **UI Toolkit**: Jetpack Compose (BOM-managed), Material 3 (`androidx.compose.material3`), Material Icons Extended
@@ -53,10 +53,10 @@ Managed centrally via Gradle Version Catalog (`gradle/libs.versions.toml`):
 
 ## 4. Quality Harness & Verification Protocol
 
-Code enforces rigid code style and static analysis standards:
+Enforces rigid code style and static analysis standards:
 - **Spotless**: Automatic code formatting (`./gradlew spotlessApply`)
 - **Detekt**: Static code analysis (`./gradlew detekt`)
-- **Unit Testing**: Mandatory unit test coverage for all UseCases and ViewModels.
+- **Unit Testing**: Mandatory unit test coverage for all UseCases and ViewModels using Turbine.
 
 ### Mandatory Verification Command:
 Before finalizing any feature or fix, run and pass:
@@ -84,16 +84,15 @@ Follow these steps to build a new feature module:
    Create a new directory under `features/<feature_name>/` (e.g., `features/feature/`).
 
 2. **Configure `build.gradle.kts`**:
-   Apply the shared convention script in `features/<feature_name>/build.gradle.kts`:
+   Configure the feature module in `features/<feature_name>/build.gradle.kts` using Version Catalog bundles:
    ```kotlin
    plugins {
        id("com.android.library")
        alias(libs.plugins.kotlin.compose)
+       alias(libs.plugins.kotlin.serialization)
        alias(libs.plugins.spotless)
        alias(libs.plugins.detekt)
    }
-
-   apply(from = "$rootDir/gradle/common-feature.gradle.kts")
 
    android {
        namespace = "com.example.codechallenge.features.<feature_name>"
@@ -102,7 +101,14 @@ Follow these steps to build a new feature module:
    dependencies {
        implementation(project(":core:common"))
        implementation(project(":core:resources"))
-       // Add feature-specific libraries (Retrofit, Coil, etc.)
+       implementation(platform(libs.androidx.compose.bom))
+       implementation(libs.bundles.common)
+       implementation(libs.bundles.compose)
+       implementation(libs.bundles.koin)
+       debugImplementation(libs.androidx.compose.ui.tooling)
+
+       testImplementation(libs.bundles.test)
+       androidTestImplementation(libs.bundles.androidTest)
    }
    ```
 
@@ -120,7 +126,7 @@ Follow these steps to build a new feature module:
    Create a Koin module (`di/FeatureModule.kt`) and load it in `CodeChallengeApplication.kt`.
 
 6. **Write Unit Tests & Run Verification**:
-   Add `*Test.kt` for UseCases and ViewModels, then run:
+   Add `*Test.kt` for UseCases and ViewModels (using Turbine), then run:
    ```bash
    ./gradlew spotlessApply detekt testDebugUnitTest
    ```
