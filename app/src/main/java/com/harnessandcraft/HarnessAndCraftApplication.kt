@@ -1,16 +1,16 @@
-package com.example.codechallenge
+package com.harnessandcraft
 
 import android.app.Application
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
 
-class CodeChallengeApplication : Application() {
+class HarnessAndCraftApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         startKoin {
             androidLogger()
-            androidContext(this@CodeChallengeApplication)
+            androidContext(this@HarnessAndCraftApplication)
             modules(listOf())
         }
     }

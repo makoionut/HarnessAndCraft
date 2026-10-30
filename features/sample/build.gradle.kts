@@ -8,7 +8,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.codechallenge.features.sample"
+    namespace = "com.harnessandcraft.features.sample"
 }
 
 dependencies {

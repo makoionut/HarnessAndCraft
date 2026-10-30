@@ -1,4 +1,4 @@
-package com.example.common
+package com.harnessandcraft.core.common
 
 import org.junit.Assert.assertEquals
 import org.junit.Test

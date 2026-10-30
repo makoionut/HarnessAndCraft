@@ -8,11 +8,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.codechallenge" // Modifica según el package de tu app
+    namespace = "com.harnessandcraft"
     compileSdk = 37
 
     defaultConfig {
-        applicationId = "com.example.codechallenge"
+        applicationId = "com.harnessandcraft"
         minSdk = 24
         targetSdk = 37
         versionCode = 1

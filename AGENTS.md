@@ -1,4 +1,4 @@
-# AGENTS.md — CodeChallenge
+# AGENTS.md — HarnessAndCraft
 
 This file is the entry point for all AI coding agents working on this repository.
 It loads the full engineering rule set; do not bypass it.

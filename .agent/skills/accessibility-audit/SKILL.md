@@ -5,7 +5,7 @@ description: Provides expert guidelines, rules, and code patterns for auditing a
 
 # Accessibility Audit & Implementation Skill (`accessibility-audit`)
 
-This skill defines mandatory accessibility (a11y) standards and implementation patterns for all Jetpack Compose UI components in the CodeChallenge project.
+This skill defines mandatory accessibility (a11y) standards and implementation patterns for all Jetpack Compose UI components in the HarnessAndCraft project.
 
 ## 1. Core Principles & Standards
 

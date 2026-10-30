@@ -1,6 +1,8 @@
-# CodeChallenge — Production-Grade Android Base Architecture & Agent Harness
+# HarnessAndCraft — Production-Grade Android Base Architecture & Agent Harness
 
-Welcome to **CodeChallenge**, a robust, production-grade, multi-module Android project template engineered for scalability, testability, and strict architectural compliance. This repository serves as a reference base for building professional Android applications from scratch using modern Android development best practices, Clean Architecture, Jetpack Compose, Material 3, and an integrated AI Agent engineering harness.
+> **Harnessing ANDroid Software Craftsmanship with Agentic AI.**
+
+Welcome to **HarnessAndCraft**, a robust, production-grade, multi-module Android project template engineered for scalability, testability, and strict architectural compliance. This repository serves as a reference base for building professional Android applications from scratch using modern Android development best practices, Clean Architecture, Jetpack Compose, Material 3, and an integrated AI Agent engineering harness.
 
 ---
 
@@ -15,10 +17,10 @@ The project adheres strictly to **Clean Architecture** combined with **MVVM (Mod
 
 ## 2. Project Topology & Multi-Module Structure
 
-CodeChallenge is modularized to enforce strict separation of concerns and dependency boundaries:
+HarnessAndCraft is modularized to enforce strict separation of concerns and dependency boundaries:
 
 ```
-CodeChallenge/
+HarnessAndCraft/
 ├── :app                          # Application entry point, Koin wiring, and navigation host
 ├── core/
 │   ├── :core:common              # Shared base abstractions (BaseViewModel, Resource<T>, UiText, safeApiCall)
@@ -95,7 +97,7 @@ Follow these steps to build a new feature module:
    }
 
    android {
-       namespace = "com.example.codechallenge.features.<feature_name>"
+       namespace = "com.harnessandcraft.features.<feature_name>"
    }
 
    dependencies {
@@ -123,7 +125,7 @@ Follow these steps to build a new feature module:
    - `presentation/` (ViewModel, UI State/Events, Composables)
 
 5. **Configure Dependency Injection**:
-   Create a Koin module (`di/FeatureModule.kt`) and load it in `CodeChallengeApplication.kt`.
+   Create a Koin module (`di/FeatureModule.kt`) and load it in `HarnessAndCraftApplication.kt`.
 
 6. **Write Unit Tests & Run Verification**:
    Add `*Test.kt` for UseCases and ViewModels (using Turbine), then run:

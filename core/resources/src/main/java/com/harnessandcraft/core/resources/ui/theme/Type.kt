@@ -1,4 +1,4 @@
-package com.example.codechallenge.core.resources.ui.theme
+package com.harnessandcraft.core.resources.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

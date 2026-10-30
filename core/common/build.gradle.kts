@@ -7,7 +7,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.codechallenge.core.common"
+    namespace = "com.harnessandcraft.core.common"
 }
 
 dependencies {

@@ -24,7 +24,7 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "CodeChallenge"
+rootProject.name = "HarnessAndCraft"
 include(":app")
 include(":core:common")
 include(":core:resources")

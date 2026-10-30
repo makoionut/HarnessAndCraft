@@ -61,7 +61,7 @@ subprojects {
                 targetExclude("**/build/**/*.kt")
                 ktlint("1.2.1").editorConfigOverride(
                     mapOf(
-                        "ktlint_function_naming_ignore_when_annotated_with" to "Composable",
+                        "ktlint_standard_function-naming" to "disabled",
                         "ktlint_standard_no-wildcard-imports" to "enabled",
                         "ij_kotlin_use_import_with_star" to "false",
                         "ij_kotlin_use_import_with_star_for_members" to "false",
@@ -70,7 +70,7 @@ subprojects {
             }
             kotlinGradle {
                 target("*.gradle.kts")
-                ktlint()
+                ktlint("1.2.1")
             }
         }
     }

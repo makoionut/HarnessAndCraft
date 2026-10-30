@@ -1,4 +1,4 @@
-package com.example.codechallenge
+package com.harnessandcraft
 
 import org.junit.Assert.assertEquals
 import org.junit.Test

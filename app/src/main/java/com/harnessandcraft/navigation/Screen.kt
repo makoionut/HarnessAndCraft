@@ -1,4 +1,4 @@
-package com.example.codechallenge.navigation
+package com.harnessandcraft.navigation
 
 /**
  * Defines destination screens and routes for the application navigation graph.

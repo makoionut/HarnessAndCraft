@@ -7,7 +7,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.codechallenge.features"
+    namespace = "com.harnessandcraft.features"
     compileSdk = 37
 
     defaultConfig {

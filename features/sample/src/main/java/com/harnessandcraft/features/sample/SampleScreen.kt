@@ -1,4 +1,4 @@
-package com.example.codechallenge.features.sample
+package com.harnessandcraft.features.sample
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
@@ -14,6 +14,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Architecture
+import androidx.compose.material.icons.rounded.AutoAwesome
 import androidx.compose.material.icons.rounded.Explore
 import androidx.compose.material.icons.rounded.Layers
 import androidx.compose.material.icons.rounded.Navigation
@@ -37,8 +38,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.codechallenge.core.resources.R
-import com.example.codechallenge.core.resources.ui.theme.CodeChallengeTheme
+import com.harnessandcraft.core.resources.R
+import com.harnessandcraft.core.resources.ui.theme.HarnessAndCraftTheme
 
 @Composable
 fun Greeting(
@@ -69,6 +70,12 @@ fun Greeting(
             title = stringResource(R.string.sample_card_navigation_title),
             description = stringResource(R.string.sample_card_navigation_desc),
             icon = Icons.Rounded.Navigation,
+        )
+
+        FeatureCard(
+            title = stringResource(R.string.sample_card_agent_harness_title),
+            description = stringResource(R.string.sample_card_agent_harness_desc),
+            icon = Icons.Rounded.AutoAwesome,
         )
 
         AnimatedVisibility(
@@ -207,7 +214,7 @@ private fun FeatureCard(
 @Preview(showBackground = true, name = "Sample Screen Light")
 @Composable
 fun GreetingPreview() {
-    CodeChallengeTheme {
+    HarnessAndCraftTheme {
         Greeting(stringResource(R.string.greeting_android))
     }
 }
