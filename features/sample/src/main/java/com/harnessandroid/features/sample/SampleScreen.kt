@@ -1,4 +1,4 @@
-package com.harnessandcraft.features.sample
+package com.harnessandroid.features.sample
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
@@ -38,8 +38,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.harnessandcraft.core.resources.R
-import com.harnessandcraft.core.resources.ui.theme.HarnessAndCraftTheme
+import com.harnessandroid.core.resources.R
+import com.harnessandroid.core.resources.ui.theme.HarnessAndroidTheme
 
 @Composable
 fun Greeting(
@@ -214,7 +214,7 @@ private fun FeatureCard(
 @Preview(showBackground = true, name = "Sample Screen Light")
 @Composable
 fun GreetingPreview() {
-    HarnessAndCraftTheme {
+    HarnessAndroidTheme {
         Greeting(stringResource(R.string.greeting_android))
     }
 }

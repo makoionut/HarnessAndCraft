@@ -1,4 +1,4 @@
-package com.harnessandcraft.navigation
+package com.harnessandroid.navigation
 
 /**
  * Defines destination screens and routes for the application navigation graph.

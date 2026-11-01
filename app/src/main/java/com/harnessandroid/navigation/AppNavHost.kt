@@ -1,4 +1,4 @@
-package com.harnessandcraft.navigation
+package com.harnessandroid.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -6,8 +6,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.harnessandcraft.core.resources.R
-import com.harnessandcraft.features.sample.Greeting
+import com.harnessandroid.core.resources.R
+import com.harnessandroid.features.sample.Greeting
 
 /**
  * Central Navigation Host owned by the `:app` module.

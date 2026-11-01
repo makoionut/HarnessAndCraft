@@ -1,4 +1,4 @@
-package com.harnessandcraft.core.resources.ui.theme
+package com.harnessandroid.core.resources.ui.theme
 
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
@@ -23,7 +23,7 @@ private val LightColorScheme = lightColorScheme(
 )
 
 @Composable
-fun HarnessAndCraftTheme(
+fun HarnessAndroidTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     dynamicColor: Boolean = true,
     content: @Composable () -> Unit,

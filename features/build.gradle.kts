@@ -7,7 +7,7 @@ plugins {
 }
 
 android {
-    namespace = "com.harnessandcraft.features"
+    namespace = "com.harnessandroid.features"
     compileSdk = 37
 
     defaultConfig {

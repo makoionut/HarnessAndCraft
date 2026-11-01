@@ -1,8 +1,8 @@
-# HarnessAndCraft — Production-Grade Android Base Architecture & Agent Harness
+# HarnessAndroid — Production-Grade Android Base Architecture & Agent Harness
 
 > **Harnessing ANDroid Software Craftsmanship with Agentic AI.**
 
-Welcome to **HarnessAndCraft**, a robust, production-grade, multi-module Android project template engineered for scalability, testability, and strict architectural compliance. This repository serves as a reference base for building professional Android applications from scratch using modern Android development best practices, Clean Architecture, Jetpack Compose, Material 3, and an integrated AI Agent engineering harness.
+Welcome to **HarnessAndroid**, a robust, production-grade, multi-module Android project template engineered for scalability, testability, and strict architectural compliance. This repository serves as a reference base for building professional Android applications from scratch using modern Android development best practices, Clean Architecture, Jetpack Compose, Material 3, and an integrated AI Agent engineering harness.
 
 ---
 
@@ -12,7 +12,74 @@ Welcome to **HarnessAndCraft**, a robust, production-grade, multi-module Android
 ```mermaid
 graph TD
     subgraph App Module [:app]
-        A[HarnessAndCraftApplication] --> B[MainActivity]
+        A[HarnessAndroidApplication] --> B[MainActivity]
+        B --> C[AppNavHost]
+    end
+
+    subgraph Core Modules
+        D[:core:common] --> E[:core:resources]
+    end
+
+    subgraph Feature Modules
+        F[:features:sample] --> D
+        F --> E
+    end
+
+    C --> F
+    A --> D
+    A --> E
+```
+
+### 2. Multi-Module Topology & Dependency Matrix
+
+| Module | Depends On | Description |
+| :--- | :--- | :--- |
+| **`:app`** | All Core & Feature modules | Entry point, Koin initialization, Central NavHost |
+| **`:core:common`** | `:core:resources` | Base abstractions (`BaseViewModel`, `Resource<T>`, `UiText`, safe API calls) |
+| **`:core:resources`** | None | Design system (Material 3 Themes, Colors, Typography, Strings) |
+| **`:features:*`** | `:core:common`, `:core:resources` | Scalable feature modules (Domain, Data, Presentation). **No horizontal dependencies between features.** |
+
+### 3. Clean Architecture & MVVM + UDF Layer Flow
+```mermaid
+graph LR
+    subgraph Presentation Layer
+        UI[Jetpack Compose UI] -->|User Events| VM[BaseViewModel]
+        VM -->|UiState Flow| UI
+    end
+
+    subgraph Domain Layer
+        VM -->|Invoke| UC[UseCases]
+        UC -->|Repository Interface| REPO_IF[Repository Contract]
+    end
+
+    subgraph Data Layer
+        REPO_IF -.->|Impl| REPO_IMPL[Repository Impl]
+        REPO_IMPL -->|Fetch| NET[Retrofit / Remote DataSource]
+        REPO_IMPL -->|Cache| DB[Room / DataStore]
+    end
+```
+
+### 4. Quality Harness & Verification Pipeline
+```mermaid
+graph TD
+    START([Developer / AI Agent Change]) --> SPOTLESS[Spotless Format: ./gradlew spotlessApply]
+    SPOTLESS --> DETEKT[Static Analysis: ./gradlew detekt]
+    DETEKT --> TESTS[Unit Tests & Turbine: ./gradlew testDebugUnitTest]
+    TESTS --> VERIFIED{All Checks Pass?}
+    VERIFIED -->|Yes| BUILD[Build Debug: ./gradlew assembleDebug]
+    VERIFIED -->|No| FIX[Fix Lints / Tests]
+    FIX --> START
+```
+
+---
+
+## 📊 Architecture & System Infographic
+
+### 1. High-Level System Architecture
+```mermaid
+graph TD
+    subgraph App Module [:app]
+        A[HarnessAndroidApplication] --> B[MainActivity]
         B --> C[AppNavHost]
     end
 
@@ -84,10 +151,10 @@ The project adheres strictly to **Clean Architecture** combined with **MVVM (Mod
 
 ## 2. Project Topology & Multi-Module Structure
 
-HarnessAndCraft is modularized to enforce strict separation of concerns and dependency boundaries:
+HarnessAndroid is modularized to enforce strict separation of concerns and dependency boundaries:
 
 ```
-HarnessAndCraft/
+HarnessAndroid/
 ├── :app                          # Application entry point, Koin wiring, and navigation host
 ├── core/
 │   ├── :core:common              # Shared base abstractions (BaseViewModel, Resource<T>, UiText, safeApiCall)
@@ -164,7 +231,7 @@ Follow these steps to build a new feature module:
    }
 
    android {
-       namespace = "com.harnessandcraft.features.<feature_name>"
+       namespace = "com.harnessandroid.features.<feature_name>"
    }
 
    dependencies {
@@ -192,7 +259,7 @@ Follow these steps to build a new feature module:
    - `presentation/` (ViewModel, UI State/Events, Composables)
 
 5. **Configure Dependency Injection**:
-   Component Koin modules (`di/FeatureModule.kt`) loaded in `HarnessAndCraftApplication.kt`.
+   Component Koin modules (`di/FeatureModule.kt`) loaded in `HarnessAndroidApplication.kt`.
 
 6. **Write Unit Tests & Run Verification**:
    Add `*Test.kt` for UseCases and ViewModels (using Turbine), then run:

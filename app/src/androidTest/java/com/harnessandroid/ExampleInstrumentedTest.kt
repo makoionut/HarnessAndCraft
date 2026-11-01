@@ -1,4 +1,4 @@
-package com.harnessandcraft.core.common
+package com.harnessandroid
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
@@ -17,6 +17,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.harnessandcraft.core.common", appContext.packageName)
+        assertEquals("com.harnessandroid", appContext.packageName)
     }
 }

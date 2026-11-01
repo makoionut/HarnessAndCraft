@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "com.harnessandcraft.core.resources"
+    namespace = "com.harnessandroid.core.resources"
 }
 
 dependencies {

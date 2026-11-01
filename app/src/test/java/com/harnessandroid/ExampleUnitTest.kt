@@ -1,4 +1,4 @@
-package com.harnessandcraft.core.common
+package com.harnessandroid
 
 import org.junit.Assert.assertEquals
 import org.junit.Test

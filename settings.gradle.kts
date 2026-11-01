@@ -24,7 +24,7 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "HarnessAndCraft"
+rootProject.name = "HarnessAndroid"
 include(":app")
 include(":core:common")
 include(":core:resources")

@@ -1,4 +1,4 @@
-package com.harnessandcraft.core.resources.ui.theme
+package com.harnessandroid.core.resources.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

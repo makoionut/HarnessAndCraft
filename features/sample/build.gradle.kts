@@ -8,7 +8,7 @@ plugins {
 }
 
 android {
-    namespace = "com.harnessandcraft.features.sample"
+    namespace = "com.harnessandroid.features.sample"
 }
 
 dependencies {
