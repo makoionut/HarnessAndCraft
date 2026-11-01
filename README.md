@@ -6,6 +6,73 @@ Welcome to **HarnessAndCraft**, a robust, production-grade, multi-module Android
 
 ---
 
+## 📊 Architecture & System Infographic
+
+### 1. High-Level System Architecture
+```mermaid
+graph TD
+    subgraph App Module [:app]
+        A[HarnessAndCraftApplication] --> B[MainActivity]
+        B --> C[AppNavHost]
+    end
+
+    subgraph Core Modules
+        D[:core:common] --> E[:core:resources]
+    end
+
+    subgraph Feature Modules
+        F[:features:sample] --> D
+        F --> E
+    end
+
+    C --> F
+    A --> D
+    A --> E
+```
+
+### 2. Multi-Module Topology & Dependency Matrix
+
+| Module | Depends On | Description |
+| :--- | :--- | :--- |
+| **`:app`** | All Core & Feature modules | Entry point, Koin initialization, Central NavHost |
+| **`:core:common`** | `:core:resources` | Base abstractions (`BaseViewModel`, `Resource<T>`, `UiText`, safe API calls) |
+| **`:core:resources`** | None | Design system (Material 3 Themes, Colors, Typography, Strings) |
+| **`:features:*`** | `:core:common`, `:core:resources` | Scalable feature modules (Domain, Data, Presentation). **No horizontal dependencies between features.** |
+
+### 3. Clean Architecture & MVVM + UDF Layer Flow
+```mermaid
+graph LR
+    subgraph Presentation Layer
+        UI[Jetpack Compose UI] -->|User Events| VM[BaseViewModel]
+        VM -->|UiState Flow| UI
+    end
+
+    subgraph Domain Layer
+        VM -->|Invoke| UC[UseCases]
+        UC -->|Repository Interface| REPO_IF[Repository Contract]
+    end
+
+    subgraph Data Layer
+        REPO_IF -.->|Impl| REPO_IMPL[Repository Impl]
+        REPO_IMPL -->|Fetch| NET[Retrofit / Remote DataSource]
+        REPO_IMPL -->|Cache| DB[Room / DataStore]
+    end
+```
+
+### 4. Quality Harness & Verification Pipeline
+```mermaid
+graph TD
+    START([Developer / AI Agent Change]) --> SPOTLESS[Spotless Format: ./gradlew spotlessApply]
+    SPOTLESS --> DETEKT[Static Analysis: ./gradlew detekt]
+    DETEKT --> TESTS[Unit Tests & Turbine: ./gradlew testDebugUnitTest]
+    TESTS --> VERIFIED{All Checks Pass?}
+    VERIFIED -->|Yes| BUILD[Build Debug: ./gradlew assembleDebug]
+    VERIFIED -->|No| FIX[Fix Lints / Tests]
+    FIX --> START
+```
+
+---
+
 ## 1. Architecture & Design Principles
 
 The project adheres strictly to **Clean Architecture** combined with **MVVM (Model-View-ViewModel)** and **Unidirectional Data Flow (UDF)**:
@@ -125,7 +192,7 @@ Follow these steps to build a new feature module:
    - `presentation/` (ViewModel, UI State/Events, Composables)
 
 5. **Configure Dependency Injection**:
-   Create a Koin module (`di/FeatureModule.kt`) and load it in `HarnessAndCraftApplication.kt`.
+   Component Koin modules (`di/FeatureModule.kt`) loaded in `HarnessAndCraftApplication.kt`.
 
 6. **Write Unit Tests & Run Verification**:
    Add `*Test.kt` for UseCases and ViewModels (using Turbine), then run:
