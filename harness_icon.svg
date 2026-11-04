@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 108 108" width="108" height="108">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#141218" />
+      <stop offset="100%" stop-color="#2B2930" />
+    </linearGradient>
+  </defs>
+  <!-- Background -->
+  <rect width="108" height="108" rx="24" fill="url(#bgGrad)" />
+
+  <!-- Outer Shield / Harness Hexagon Frame -->
+  <path d="M54,16 L88,32 L88,76 L54,92 L20,76 L20,32 Z" fill="#6750A4" />
+  <path d="M54,22 L82,35 L82,73 L54,86 L26,73 L26,35 Z" fill="#211F26" />
+
+  <!-- Code Chevrons & Terminal Prompt (> _) -->
+  <path d="M38,42 L50,54 L38,66 L43,71 L60,54 L43,37 Z" fill="#D0BCFF" />
+
+  <!-- Terminal Cursor Bar -->
+  <rect x="60" y="64" width="14" height="6" rx="2" fill="#3DDC84" />
+</svg>
