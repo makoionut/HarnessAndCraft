@@ -118,7 +118,7 @@ Never merge without passing the golden triad:
 
 ## 🛠️ Guide: Spun-up a New Feature Module
 
-> 💡 **Pro-Tip**: You can create new feature modules **manually** following the steps below, or simply by asking your AI coding agent to generate and wire the feature module for you automatically!
+> 💡 **Tip**: You can follow the manual example below step-by-step, or simply ask your AI coding agent to generate and wire the new feature module for you automatically!
 
 1. **Create Module Directory**: `features/<feature_name>/`
 2. **Configure `build.gradle.kts`**:
